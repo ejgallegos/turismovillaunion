@@ -13,6 +13,7 @@ export const get = async () => {
   }
 
   const posts = await fetchPosts();
+  console.log(posts);
 
   return rss({
     title: `${SITE.name}’s Blog`,

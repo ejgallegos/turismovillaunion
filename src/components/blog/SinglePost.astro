@@ -8,23 +8,25 @@ import SocialShare from '~/components/common/SocialShare.astro';
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
-import type { Post } from '~/types';
+// import type { Post } from '~/types';
 
-export interface Props {
-  post: Post;
-  url: string | URL;
-}
+// export interface Props {
+//   post: Post;
+//   url: string | URL;
+// }
 
 const { post, url } = Astro.props;
+const datePost = new Date(post.date);
+console.log({ post });
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
   <article>
-    <header class={post.image ? '' : ''}>
+    <header class={post?.yoast_head_json?.og_image[0]?.url ? '' : ''}>
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
+          <time datetime={String(datePost)}>{getFormattedDate(datePost)}</time>
           {
             post.category && (
               <>
@@ -36,28 +38,28 @@ const { post, url } = Astro.props;
               </>
             )
           }
-          {post.readingTime && <> · {post.readingTime} min read</>}
         </p>
       </div>
       <h1
-        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
+        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading uppercase"
       >
-        {post.title}
+        {post.title.rendered}
       </h1>
-      <p
+
+      <div
         class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify"
       >
-        {post.excerpt}
-      </p>
+        <p set:html={post.excerpt.rendered} />
+      </div>
 
       {
-        post.image ? (
+        post?.yoast_head_json?.og_image[0]?.url ? (
           <Picture
-            src={post.image}
+            src={post?.yoast_head_json?.og_image[0]?.url}
             class="max-w-full lg:max-w-6xl mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
             widths={[400, 900]}
             sizes="(max-width: 900px) 400px, 900px"
-            alt={post.description || ''}
+            alt={post.slug || ''}
             loading="eager"
             aspectRatio={16 / 9}
             width={900}
@@ -83,13 +85,17 @@ const { post, url } = Astro.props;
             <post.Content />
           </>
         ) : (
-          <Fragment set:html={post.content} />
+          <Fragment set:html={post.content.rendered} />
         )
       }
     </div>
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
       <PostTags tags={post.tags} class="mr-5" />
-      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
+      <SocialShare
+        url={url}
+        text={post.title.rendered}
+        class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"
+      />
     </div>
   </article>
 </section>

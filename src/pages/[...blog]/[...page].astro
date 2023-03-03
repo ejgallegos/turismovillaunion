@@ -5,19 +5,23 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
+import { getLatestPosts } from '~/utils/api';
 
 import { fetchPosts } from '~/utils/blog';
 import { BLOG_BASE } from '~/utils/permalinks';
 
 export async function getStaticPaths({ paginate }) {
-  if (BLOG?.disabled || BLOG?.list?.disabled) return [];
+  const posts = (await getLatestPosts()) || [];
+  const postId = posts.map((p) => p.slug);
   return paginate(await fetchPosts(), {
-    params: { blog: BLOG_BASE || undefined },
+    params: { blog: BLOG_BASE || JSON.stringify(postId) },
     pageSize: BLOG.postsPerPage,
   });
 }
 
 const { page } = Astro.props;
+const { blog } = Astro.params;
+console.log({ blog });
 const currentPage = page.currentPage ?? 1;
 
 const meta = {
@@ -30,10 +34,8 @@ const meta = {
 
 <Layout {meta}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline
-      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
-    >
-      The Blog
+    <Headline subtitle="Conoce nuestras novedades y actividades mes a mes, sé parte de nosotros.-">
+      Blog de Noticias
     </Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

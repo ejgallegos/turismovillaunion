@@ -2,7 +2,8 @@
 import Grid from '~/components/blog/Grid.astro';
 
 import { getBlogPermalink } from '~/utils/permalinks';
-import { findLatestPosts } from '~/utils/blog';
+// import { findLatestPosts } from '~/utils/blog';
+import { getLatestPosts } from '~/utils/api';
 
 export interface Props {
   title?: string;
@@ -14,13 +15,13 @@ export interface Props {
 
 const {
   title = await Astro.slots.render('title'),
-  allPostsText = 'View all posts',
+  allPostsText = 'Ver todo el blog',
   allPostsLink = getBlogPermalink(),
   information = await Astro.slots.render('information'),
-  count = 4,
+  //count = 4,
 } = Astro.props;
 
-const posts = await findLatestPosts({ count });
+const posts = await getLatestPosts();
 ---
 
 <section class="px-4 py-16 mx-auto max-w-7xl lg:py-20">
