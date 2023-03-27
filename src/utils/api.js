@@ -24,7 +24,22 @@ export async function getLatestPosts() {
 
 export async function getAllPosts() {
     try {
-        const response = await axios.get(`${apiUrl}/posts?per_page=5&offset=0`);
+        const response = await axios.get(`${apiUrl}/posts?per_page=4&offset=0`);
+        //const response = await axios.get(`${apiUrl}/posts`);
+
+        // Guarda los datos devueltos por la API en la variable global postsData
+        postsData = response.data;
+
+    } catch (error) {
+        // Maneja el error
+        console.error(error);
+    }
+    return postsData;
+}
+
+export async function getPostsCategories(cat, perPag = 10) {
+    try {
+        const response = await axios.get(`${apiUrl}/posts?categories=${cat}&per_page=${perPag}&offset=0`);
 
         // Guarda los datos devueltos por la API en la variable global postsData
         postsData = response.data;

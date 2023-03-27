@@ -1,9 +1,9 @@
 import defaultImage from './assets/images/default.png';
 
 const CONFIG = {
-  name: 'AstroWind',
+  name: 'Turismo Villa Unión',
 
-  origin: 'https://astrowind.vercel.app',
+  origin: 'https://www.turismovillaunion.gob.ar',
   basePathname: '/',
   trailingSlash: false,
 

@@ -3,7 +3,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Landing',
+      text: 'Servicios Turisticos',
       links: [
         {
           text: 'Sass',
@@ -20,7 +20,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'Pages',
+      text: 'Nosotros',
       links: [
         {
           text: 'Features',
@@ -49,19 +49,19 @@ export const headerData = {
       ],
     },
     {
-      text: 'Widgets',
-      href: '#',
-    },
-    {
       text: 'Blog',
       href: getBlogPermalink(),
+    },
+    {
+      text: 'Contacto',
+      href: '#',
     },
   ],
   actions: [
     { type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }
   ],
 };
-  
+
 export const footerData = {
   links: [
     {
