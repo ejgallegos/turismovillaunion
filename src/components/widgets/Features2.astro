@@ -1,24 +1,36 @@
 ---
 import { Icon } from 'astro-icon';
+import { getPostsCategories } from '~/utils/api';
 
-interface Item {
-  title?: string;
-  description?: string;
-  icon?: string;
+// interface Item {
+//   title?: string;
+//   description?: string;
+//   icon?: string;
+// }
+
+// export interface Props {
+//   title?: string;
+//   subtitle?: string;
+//   highlight?: string;
+//   items: Array<Item>;
+// }
+
+const posts = (await getPostsCategories(5)) || [];
+//const filteredArray = posts.filter((cat) => cat.categories.includes(5));
+/*
+CATEGORIAS = {
+  15: 'HOSPEDAJES EN VILLA UNIÓN',
+  29: 'SERVICIOS TURISTICOS'
+  85: 'ALOJAMIENTOS TURISTICOS ALTERNATIVOS'
+  18: 'CABAÑAS EN PAGANCILLO'
 }
+*/
 
-export interface Props {
-  title?: string;
-  subtitle?: string;
-  highlight?: string;
-  items: Array<Item>;
-}
-
+// const { post } = Astro.props;
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   highlight,
-  items = [],
 } = Astro.props;
 ---
 
@@ -43,23 +55,22 @@ const {
             )}
 
             {subtitle && (
-              <p
-                class="max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400"
-                set:html={subtitle}
-              />
+              <p class="max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400" set:html={subtitle} />
             )}
           </div>
         )
       }
       <div class={`grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 dark:text-white items-stretch`}>
         {
-          items.map(({ title, description, icon }) => (
+          posts.map((item) => (
             <div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-lg hover:shadow-md transition border border-transparent dark:border-slate-800">
               <div class="flex items-center">
-                <Icon name={icon} class="w-10 h-10" />
-                <div class="ml-4 text-xl font-bold">{title}</div>
+                <Icon name="flat-color-icons:landscape" class="w-10 h-10" />
+                <div class="ml-4 text-xl font-bold uppercase">{item?.title?.rendered}</div>
               </div>
-              {description && <p class="text-muted dark:text-gray-400 text-md mt-4" set:html={description} />}
+              {item?.excerpt?.rendered && (
+                <p class="text-muted dark:text-gray-400 text-md mt-4" set:html={item?.excerpt?.rendered} />
+              )}
             </div>
           ))
         }

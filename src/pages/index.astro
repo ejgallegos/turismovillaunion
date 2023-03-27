@@ -45,30 +45,26 @@ const meta = {
     title="te mostramos algunos de nuestros principales atractivos"
     items={[
       {
-        title: 'Parque Nacional Talampaya',
+        title: 'Historia',
         description:
-          'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+          'Las vastas cuencas permanecían virtualmente desconocida debido a su aislamiento. Solo la construcción de la carretera en la década de 1970, que une Patquía con Villa Unión permitió el ingreso de vehículos motorizados. El objetivo fue conservar una interesante muestra del ambiente de monte, yacimientos arqueológicos y paleontológicos en un marco de imponente belleza escénica. El cañón y su acceso fueron por primera vez levantados por el ingeniero Werner Lorenz, geodesta alemán radicado en Villa Unión.',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
+        title: 'Visitanos',
         description:
-          'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
-      },
-      {
-        title: 'Nulla omittam sadipscing mel ne',
-        description:
-          'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+          'Comprá on-line tu ticket de ingreso haciendo click <a href="https://ventaweb.apn.gob.ar/reserva/inicio?dp=11" target="_blank">aquí</a> ',
       },
     ]}
     image={{
-      src: import('~/assets/images/caos.jpg'),
+      src: import('/public/images/Banner/Atractivos/Talampaya 2.png'),
       alt: 'Parque Nacional Talampaya',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Parque Nacional Talampaya</h3>
-      Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod
-      tacimates.
+      Se encuentra ubicado al oeste de la Pcia. de La Rioja, en el Dpro. General Felipe Varela. Fue creado con el objetivo
+      de proteger importantes yacimientos arqueológicos y paleontológicos de la zona. Ocupa 213.800ha (según la Administración
+      de Parques Nacionales). En 2000 la Unesco lo declaró como Patrimonio Cultural y Natural de la Humanidad en América.
     </Fragment>
   </Content>
 
@@ -79,9 +75,6 @@ const meta = {
     isAfterContent
     items={[
       {
-        title: 'Per ei quaeque sensibus',
-      },
-      {
         title: 'Cu imperdiet posidonium sed',
       },
       {
@@ -92,20 +85,29 @@ const meta = {
       },
       {
         title: 'Cu imperdiet posidonium sed',
+      },
+      {
+        title: 'Nulla omittam sadipscing mel ne',
       },
       {
         title: 'Nulla omittam sadipscing mel ne',
       },
     ]}
     image={{
-      src: import('~/assets/images/vintage.jpg'),
+      src: import('/public/images/Banner/Atractivos/collage-scaled.jpg'),
       alt: 'Vintage Image',
     }}
-  />
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">¡Mucho por conocer!</h3>
+      El Departamento General Felipe Varela en la provincia de La Rioja, Argentina, es un lugar lleno de hermosos paisajes
+      naturales, rica cultura y patrimonio histórico.
+    </Fragment>
+  </Content>
 
   <!-- Steps Widget ****************** -->
 
-  <Steps
+  <!-- <Steps
     title="Get your dream website up and running in no time with AstroWind."
     items={[
       {
@@ -135,7 +137,7 @@ const meta = {
       src: import('~/assets/images/creativity.jpg'),
       alt: 'Steps image',
     }}
-  />
+  /> -->
 
   <!-- Features2 Widget ************** -->
 
@@ -143,62 +145,6 @@ const meta = {
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
     highlight="Components"
-    items={[
-      {
-        title: 'Headers',
-        description:
-          'In general, Headers contain information that makes it easier for visitors to interact with the website.',
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          'If you want your website to get more than its fair share of visitors, the Hero section needs to be stellar.',
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Display your product in action and how the Features actually create a solution for your target customer.',
-        icon: 'flat-color-icons:todo-list',
-      },
-      {
-        title: 'Content',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'icon-park:page-template',
-      },
-    ]}
   />
 
   <!-- HighlightedPosts Widget ******* -->

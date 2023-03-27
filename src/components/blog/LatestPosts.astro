@@ -3,7 +3,7 @@ import Grid from '~/components/blog/Grid.astro';
 
 import { getBlogPermalink } from '~/utils/permalinks';
 // import { findLatestPosts } from '~/utils/blog';
-import { getLatestPosts } from '~/utils/api';
+import { getPostsCategories } from '~/utils/api';
 
 export interface Props {
   title?: string;
@@ -21,7 +21,7 @@ const {
   //count = 4,
 } = Astro.props;
 
-const posts = await getLatestPosts();
+const posts = (await getPostsCategories(1, 4)) || [];
 ---
 
 <section class="px-4 py-16 mx-auto max-w-7xl lg:py-20">
